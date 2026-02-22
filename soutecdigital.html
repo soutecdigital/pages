@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutec Digital 1w| Soluções</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23020b14%22/><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-family=%22Orbitron%22 font-weight=%22bold%22 font-size=%2260%22 fill=%22%2300f2ff%22 style=%22filter:drop-shadow(0 0 5px %2300f2ff)%22>S</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+
+        :root {
+            --glow-cyan: rgba(0, 242, 255, 0.6);
+            --glow-purple: rgba(188, 19, 254, 0.6);
+        }
+
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #020b14;
+        }
+
+        body {
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(circle at center, #0a192f 0%, #020b14 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .font-quantum { font-family: 'Orbitron', sans-serif; }
+
+        .neon-card {
+            background: rgba(2, 15, 30, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.5s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .neon-card:hover { transform: translateY(-5px) scale(1.02); }
+        .neon-cyan { border-bottom: 3px solid #00f2ff; box-shadow: 0 5px 20px rgba(0, 242, 255, 0.1); }
+        .neon-purple { border-bottom: 3px solid #bc13fe; box-shadow: 0 5px 20px rgba(188, 19, 254, 0.1); }
+        .neon-green { border-bottom: 3px solid #39ff14; box-shadow: 0 5px 20px rgba(57, 255, 20, 0.1); }
+
+        .text-glow {
+            background: linear-gradient(90deg, #fff, #00f2ff, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.5));
+        }
+
+        /* Estilo do Agente IA (Popup) */
+        #ai-agent {
+            position: fixed;
+            bottom: -400px;
+            right: 20px;
+            width: 350px;
+            background: rgba(10, 25, 47, 0.95);
+            border: 1px solid #00f2ff;
+            border-radius: 20px;
+            padding: 20px;
+            z-index: 100;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .agent-active { bottom: 20px !important; }
+
+        .robot-icon {
+            width: 50px;
+            height: 50px;
+            background: #00f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #020b14;
+            font-size: 24px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px #00f2ff;
+        }
+
+        .agent-btn {
+            background: #00f2ff;
+            color: #020b14;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .agent-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px #00f2ff; }
+
+        @media (max-width: 768px) {
+            #ai-agent { width: 90%; right: 5%; left: 5%; }
+            html, body { overflow-y: auto; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div id="ai-agent">
+        <div class="flex justify-between items-start">
+                        <div class="robot-icon">
+                                <div class="relative w-12 h-12">
+                                    <span class="absolute inset-0 rounded-full bg-cyan-400/30 animate-ping"></span>
+                                    <svg class="relative w-12 h-12 text-cyan-400" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2c-1 0-2 .5-2 1.5V5H6.5A2.5 2.5 0 004 7.5v3A2.5 2.5 0 006.5 13H10v1.5c0 1 1 1.5 2 1.5s2-.5 2-1.5V13h3.5A2.5 2.5 0 0020 10.5v-3A2.5 2.5 0 0017.5 5H14V3.5C14 2.5 13 2 12 2zM8 18v2a2 2 0 002 2h4a2 2 0 002-2v-2H8z" />
+                                    </svg>
+                                </div>
+                        </div>
+                        <button onclick="closeAgent()" class="text-gray-500 hover:text-white"> 
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+        </div>
+        <div class="font-quantum text-[10px] text-cyan-400 mb-2 tracking-widest uppercase">Protocolo de Abordagem IA</div>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            A tecnologia quântica e a IA são o presente. Como está a saúde da arquitetura de software da sua empresa hoje? Vamos blindar sua stack?
+        </p>
+        <div class="flex gap-3">
+            <a href="https://wa.me/5500000000000?text=Olá!%20Vi%20o%20robô%20no%20site%20e%20quero%20blindar%20minha%20stack." target="_blank" class="agent-btn">Falar no WhatsApp</a>
+        </div>
+    </div>
+
+    <nav class="p-4 md:p-6 flex justify-between items-center max-w-7xl mx-auto w-full relative z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 glass border border-cyan-500/50 rounded-xl flex items-center justify-center bg-cyan-500/10 shadow-[0_0_15px_rgba(0,242,255,0.4)]">
+                <span class="text-cyan-400 font-bold font-quantum text-xl">S</span>
+            </div>
+            <div class="font-quantum font-bold text-xl tracking-tighter">
+                SOUTEC <span class="text-[8px] block text-orange-400 tracking-[3px] uppercase leading-none">Digital Soluções</span>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[2px] font-bold">
+            <a href="#" class="text-cyan-400 border-b border-cyan-400">Início</a>
+            <a href="#" class="hover:text-cyan-400 transition">Sistemas</a>
+            <a href="#" class="hover:text-cyan-400 transition">IA & Dev</a>
+            <a href="#" class="hover:text-cyan-400 transition">Contato</a>
+        </div>
+    </nav>
+
+    <header class="relative flex flex-col items-center justify-center pt-2 px-4">
+        <div class="relative flex items-center justify-center mb-6 s-nucleus-box" id="s-nucleus">
+            <div class="absolute w-40 h-40 md:w-64 md:h-64 border-t-2 border-b-2 border-cyan-500/40 rounded-full animate-[spin_8s_linear_infinite]"></div>
+            <div class="absolute w-48 h-48 md:w-72 md:h-72 border-l border-r border-purple-500/20 rounded-full animate-[spin_12s_linear_infinite_reverse]"></div>
+            <div class="relative z-10 w-24 h-24 md:w-32 md:h-32 glass border-2 border-cyan-400/50 rounded-[35px] flex items-center justify-center rotate-12 shadow-[0_0_30px_rgba(0,242,255,0.3)]">
+                <span class="text-5xl md:text-6xl font-quantum font-bold text-glow">S</span>
+            </div>
+        </div>
+        <div class="text-center z-10">
+            <h1 class="text-4xl md:text-7xl font-quantum font-bold mb-2 text-glow leading-none">Soutec Digital</h1>
+            <p id="typewriter" class="text-sm md:text-lg text-orange-400 font-light tracking-[8px] uppercase min-h-[20px]"></p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6 relative z-10 w-full grid-main">
+        <div class="neon-card neon-cyan p-6 md:p-8 flex flex-col items-center text-center">
+                        <div class="text-cyan-400 text-3xl mb-4">
+                            <div class="relative w-12 h-12">
+                                <span class="absolute inset-0 rounded-full bg-cyan-400/20 animate-pulse"></span>
+                                <svg class="relative w-12 h-12 text-cyan-400" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.59 13.41a1 1 0 011.42 0l4.24 4.24a3 3 0 01-4.24 4.24l-4.24-4.24a1 1 0 010-1.42l2.83-2.83zM7.05 6.05a3 3 0 014.24 0l1.41 1.41a1 1 0 01-1.42 1.42L9.88 7.47a1 1 0 00-1.41 0L6.05 9.88a1 1 0 01-1.42-1.42l2.42-2.41z" />
+                                </svg>
+                            </div>
+                        </div>
+            <h3 class="text-lg font-quantum font-bold mb-2 text-white">Microservices</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Arquiteturas distribuídas PHP 8.3 para alta escalabilidade.</p>
+        </div>
+        <div class="neon-card neon-purple p-6 md:p-8 flex flex-col items-center text-center">
+                        <div class="text-purple-500 text-3xl mb-4">
+                            <div class="relative w-12 h-12">
+                                <span class="absolute inset-0 rounded-full bg-purple-500/20 animate-pulse"></span>
+                                <svg class="relative w-12 h-12 text-purple-500" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2a6 6 0 016 6c0 1.5-.5 2.5-1 3a3 3 0 110 6H7a4 4 0 010-8 4 4 0 01-1-3 6 6 0 016-6z" />
+                                </svg>
+                            </div>
+                        </div>
+            <h3 class="text-lg font-quantum font-bold mb-2 text-white">AI Integration</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Modelos inteligentes para automação e análise preditiva.</p>
+        </div>
+        <div class="neon-card neon-green p-6 md:p-8 flex flex-col items-center text-center">
+                        <div class="text-green-500 text-3xl mb-4">
+                            <div class="relative w-12 h-12">
+                                <span class="absolute inset-0 rounded-full bg-green-500/20 animate-pulse"></span>
+                                <svg class="relative w-12 h-12 text-green-500" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="6" y="6" width="12" height="12" rx="2" />
+                                    <path d="M9 9v6M15 9v6M9 12h6" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                                </svg>
+                            </div>
+                        </div>
+            <h3 class="text-lg font-quantum font-bold mb-2 text-white">Cloud Pro</h3>
+            <p class="text-gray-400 text-xs leading-relaxed">Performance otimizada com Docker e Kubernetes.</p>
+        </div>
+    </main>
+
+    <footer class="flex flex-col items-center justify-end pb-4 h-[25vh] gap-4 relative z-50">
+        <div class="w-full max-w-4xl border-t border-white/5 pt-4">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-2xl text-gray-500 opacity-40 hover:opacity-80 transition-opacity duration-500">
+                <span title="PHP 8.3" class="px-2 py-1 text-[10px] bg-white/5 rounded">PHP</span>
+                <span title="Laravel" class="px-2 py-1 text-[10px] bg-white/5 rounded">LV</span>
+                <span title="Docker" class="px-2 py-1 text-[10px] bg-white/5 rounded">DK</span>
+                <span title="Vue.js" class="px-2 py-1 text-[10px] bg-white/5 rounded">VUE</span>
+                <span title="MySQL" class="px-2 py-1 text-[10px] bg-white/5 rounded">DB</span>
+            </div>
+        </div>
+        <div class="flex gap-6 text-xl">
+            <a href="https://linkedin.com/in/soutec-digital-367a963b2" class="text-gray-500 hover:text-cyan-400 transition">in</a>
+            <a href="#" class="text-gray-500 hover:text-cyan-400 transition">gh</a>
+            <a href="#" class="text-gray-500 hover:text-cyan-400 transition">ig</a>
+        </div>
+        <div class="text-center">
+            <p class="text-[9px] text-gray-600 tracking-[4px] uppercase font-medium">© 2026 Soutec Digital Solutions</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // TYPEWRITER
+        const text = "Transformando negócios em potências digitais.";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.onload = typeWriter;
+
+        // AGENTE IA POPUP TRIGGER
+        setTimeout(() => {
+            document.getElementById('ai-agent').classList.add('agent-active');
+        }, 2000);
+
+        function closeAgent() {
+            document.getElementById('ai-agent').classList.remove('agent-active');
+        }
+
+        // PARALLAX
+        document.addEventListener('mousemove', (e) => {
+            const nucleus = document.getElementById('s-nucleus');
+            const x = (window.innerWidth / 2 - e.pageX) / 45;
+            const y = (window.innerHeight / 2 - e.pageY) / 45;
+            nucleus.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // PARTICULAS
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: '#00f2ff' },
+                opacity: { value: 0.3 },
+                size: { value: 1.5 },
+                line_linked: { enable: true, distance: 150, color: '#00f2ff', opacity: 0.15, width: 1 },
+                move: { enable: true, speed: 1.2 }
+            }
+        });
+    </script>
+</body>
+</html>
