@@ -1,8 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/sistemas": "pages/sistemas.js",
-  "/contato": "pages/contato.js"
-}
+{"/_app":"pages/_app.js","/_error":"pages/_error.js","/_document":"pages/_document.js","/sistemas":"pages/sistemas.html","/contato":"pages/contato.html","/":"pages/index.html","/soutecdigital":"pages/soutecdigital.html","/api/contact":"pages/api/contact.js","/404":"pages/404.html"}

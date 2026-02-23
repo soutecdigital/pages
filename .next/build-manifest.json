@@ -1,41 +1,51 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-c67a75d1b6f99dc8.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
+  "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/ORwAtPEAmXWiJIg3s9NJd/_buildManifest.js",
+    "static/ORwAtPEAmXWiJIg3s9NJd/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
     "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/chunks/pages/index-4582e83e44ea8998.js"
     ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/css/663705a38d2d6e53.css",
+      "static/chunks/pages/_app-958e4f7b895b1935.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/chunks/pages/_error-ee5b5fb91d29d86f.js"
     ],
     "/contato": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/contato.js"
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/chunks/pages/contato-913c180b1bc73e23.js"
     ],
     "/sistemas": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/sistemas.js"
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/chunks/pages/sistemas-531f01425f0a8262.js"
+    ],
+    "/soutecdigital": [
+      "static/chunks/webpack-fd8027ecb5121007.js",
+      "static/chunks/framework-142bc663a62a6fa3.js",
+      "static/chunks/main-f8ee7ccb8da3db18.js",
+      "static/chunks/pages/soutecdigital-81558a58ae664f0a.js"
     ]
   },
   "ampFirstPages": []

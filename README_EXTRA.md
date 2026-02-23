@@ -24,3 +24,27 @@ Deploy para Cloudflare Pages (resumo rápido)
 Se quiser, eu posso:
 - Executar `npm run build && npx next export` localmente e preparar os arquivos para publicação.
 - Criar um workflow GitHub Actions que faz build + export e publica automaticamente no Cloudflare Pages.
+
+## Cloudflare Pages — Deploy
+
+This project can be deployed to Cloudflare Pages. Two deployment options are available:
+
+1) Static export (simple) — generates `out/` directory.
+
+- Build command (Pages): `npm ci && npm run export:pages`
+- Output directory: `out`
+
+Note: `next export` disables Next API routes. To preserve the `/api/contact` endpoint we added a Pages Function in `functions/api/contact.js`.
+
+2) Using the Cloudflare adapter (`@cloudflare/next-on-pages`) — used for SSR/Edge functions. If you prefer this route, use the `deploy` script in `package.json`.
+
+### Environment variables (for email sending)
+
+- `SENDGRID_API_KEY` — (optional) SendGrid API key to send contact emails.
+- `TO_EMAIL` — (optional) recipient email for contact messages.
+- `FROM_EMAIL` — (optional) sender address used when sending email.
+
+### Notes
+
+- When using Pages Functions, the `functions/` folder is deployed together with static output.
+- If you need help wiring the Cloudflare Pages project settings (build command, output directory, secrets), tell me and I can update them for you.
