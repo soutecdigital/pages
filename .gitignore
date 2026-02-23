@@ -1,1 +1,5 @@
 node_modules
+# Ignorar artefatos de build
+.next/
+out/
+build/
