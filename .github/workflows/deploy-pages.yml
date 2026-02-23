@@ -18,13 +18,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build + adapter
-        run: npm run deploy
+      - name: Build (static export)
+        run: npm run export:pages
 
-      - name: Deploy to Cloudflare Pages (wrangler)
+      - name: Publish to Cloudflare Pages (wrangler)
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_PAGES_PROJECT_NAME: ${{ secrets.CF_PAGES_PROJECT_NAME }}
         run: |
-          npx wrangler@3 pages deploy .output --project-name="${{ secrets.CF_PAGES_PROJECT_NAME }}" --branch=main --commit-sha="${{ github.sha }}"
+          npx wrangler@3 pages publish out --project-name="${{ secrets.CF_PAGES_PROJECT_NAME }}" --branch=main --commit-sha="${{ github.sha }}"
