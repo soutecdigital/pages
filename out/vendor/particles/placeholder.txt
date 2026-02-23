@@ -1,3 +1,0 @@
-Download particles.min.js from:
-https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js
-Save it as particles.min.js in this folder.
